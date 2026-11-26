@@ -1,7 +1,7 @@
 function ProductPurchase() {
   return (
     <div>
-      <h1>purchased product will shown</h1>
+      <h1>purchased product shown</h1>
     </div>
   );
 }

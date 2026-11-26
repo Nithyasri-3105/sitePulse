@@ -13,8 +13,7 @@ function ComplaintManagement() {
       {/*
       <p>Client Complaints will be displayed here.</p>
       <form onSubmit={handleSubmit}>
-        <textarea placeholder="Engineer Response"
-          value={response} onChange={(e) => setResponse(e.target.value)} />
+        <textarea placeholder="Engineer Response" value={response} onChange={(e) => setResponse(e.target.value)} />
         <br /><br />
 
         <select value={status} onChange={(e) => setStatus(e.target.value)}><option>Pending</option>
@@ -23,8 +22,7 @@ function ComplaintManagement() {
         </select>
 
         <br /><br />
-        <textarea placeholder="Resolution Remarks"
-          value={remarks} onChange={(e) => setRemarks(e.target.value)} />
+        <textarea placeholder="Resolution Remarks" value={remarks} onChange={(e) => setRemarks(e.target.value)} />
         <br /><br />
         <button type="submit">Update Complaint</button>
       </form>
