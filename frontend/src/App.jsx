@@ -32,8 +32,7 @@ function App() {
         <Route path="/client/gallery" element={<ProgressGallery />} />
         <Route path="/client/budget" element={<BudgetOverview />} />
         <Route path="/client/complaints" element={<ClientComplaints />} />
-        <Route path="/client/milestones-documents" element={<MilestonesDocuments />} />
-      </Routes>
+        <Route path="/client/milestones-documents" element={<MilestonesDocuments />} /></Routes>
     </BrowserRouter>
   );
 }
