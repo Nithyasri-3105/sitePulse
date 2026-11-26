@@ -26,7 +26,8 @@ function App() {
         <Route path="/engineer/create-project" element={<CreateProject />} />
         <Route path="/engineer/project/:id" element={<ProjectWorkspace />} />
         <Route path="/engineer/complaints" element={<ComplaintManagement />} />
-        <Route path="/engineer/purchases" element={<ProductPurchase />} />       
+        <Route path="/engineer/purchases" element={<ProductPurchase />} />  
+             
         <Route path="/client/dashboard" element={<ClientDashboard />} />
         <Route path="/client/progress" element={<ProgressMonitoring />} />
         <Route path="/client/gallery" element={<ProgressGallery />} />

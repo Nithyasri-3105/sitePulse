@@ -1,32 +1,59 @@
-import { useState } from "react";
+
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { complaintschema } from "../components/FormSchema/complaintschema";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 function ComplaintManagement() {
-  const [response, setResponse] = useState("");
-  const [status, setStatus] = useState("Pending");
-  const [remarks, setRemarks] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {e.preventDefault();console.log(response, status, remarks);};
+  const {register, handleSubmit, formState: { errors }} = useForm({resolver: zodResolver(complaintschema)});
+
+  function onSubmit(data) {
+    console.log(data);
+    alert("Complaint Response Submitted");
+  }
 
   return (
     <div>
       <h2>Complaint Management</h2>
-      {/*
-      <p>Client Complaints will be displayed here.</p>
-      <form onSubmit={handleSubmit}>
-        <textarea placeholder="Engineer Response" value={response} onChange={(e) => setResponse(e.target.value)} />
-        <br /><br />
 
-        <select value={status} onChange={(e) => setStatus(e.target.value)}><option>Pending</option>
-          <option>In Progress</option>
-          <option>Resolved</option>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label>Complaint Title</label>
+        <input type="text" placeholder="Enter" {...register("complaintTitle")} />
+        <p>{errors.complaintTitle?.message}</p>
+        <br />
+
+        <label>Engineer Response</label>
+        <textarea placeholder="Enter" {...register("response")} />
+        <p>{errors.response?.message}</p>
+        <br />
+
+        <label>Complaint Status</label>
+        <select {...register("status")}>
+          <option value="">Select Status</option>
+          <option value="Pending">Pending</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Resolved">Resolved</option>
         </select>
+        <p>{errors.status?.message}</p>
+        <br />
 
-        <br /><br />
-        <textarea placeholder="Resolution Remarks" value={remarks} onChange={(e) => setRemarks(e.target.value)} />
-        <br /><br />
-        <button type="submit">Update Complaint</button>
+        <label>Resolution Remarks</label>
+        <textarea placeholder="Enter" {...register("resolution")} />
+        <p>{errors.resolution?.message}</p>
+        <br />
+
+        <button type="submit">Submit Response</button>
       </form>
-      */}
+
+      <button onClick={() => navigate("/engineer/dashboard")}>
+        Back to Dashboard
+      </button>
+
+      <button onClick={() => navigate("/engineer/purchases")}>
+        Next: Product Purchase
+      </button>
     </div>
   );
 }

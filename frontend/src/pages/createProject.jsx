@@ -1,38 +1,64 @@
-import { useState } from "react";
+
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { projectschema } from "../components/FormSchema/projectschema";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 function CreateProject() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [location, setLocation] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [budget, setBudget] = useState("");
-  const [description, setDescription] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {e.preventDefault();console.log({name, email, location,startDate, endDate, budget, description});};
+  const {register,handleSubmit,formState: { errors } } = useForm({resolver: zodResolver(projectschema) });
+
+  function onSubmit(data) {
+    console.log(data);
+    alert("Project Created Successfully");
+    navigate("/engineer/projects");
+  }
 
   return (
     <div>
       <h2>Create Project</h2>
-      <form onSubmit={handleSubmit}>
-        <input placeholder="Project Name" value={name} onChange={(e) => setName(e.target.value)} required />
-        <br /><br />
-        <input type="email" placeholder="Client Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <br /><br />
-        <input placeholder="Project Location" value={location} onChange={(e) => setLocation(e.target.value)} required />
-        <br /><br />
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label>Project Name</label>
+        <input type="text" placeholder="Enter" {...register("projectName")} />
+        <p>{errors.projectName?.message}</p>
+        <br />
+
+        <label>Client Email</label>
+        <input type="email" placeholder=" Enter" {...register("clientEmail")} />
+        <p>{errors.clientEmail?.message}</p>
+        <br />
+
+        <label>Location</label>
+        <input type="text" placeholder=" Enter" {...register("location")} />
+        <p>{errors.location?.message}</p>
+        <br />
+
         <label>Start Date</label>
-        <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} required />
-        <br /><br />
+        <input type="date" {...register("startDate")} />
+        <p>{errors.startDate?.message}</p>
+        <br />
+
         <label>Expected Completion Date</label>
-        <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} required />
-        <br /><br />
-        <input type="number" placeholder="Estimated Budget" value={budget} onChange={(e) => setBudget(e.target.value)} required />
-        <br /><br />
-        <textarea placeholder="Project Description" value={description} onChange={(e) => setDescription(e.target.value)} />
-        <br /><br />
+        <input type="date" {...register("endDate")} />
+        <p>{errors.endDate?.message}</p>
+        <br />
+
+        <label>Estimated Budget</label>
+        <input type="number" placeholder=" Enter" {...register("budget")} />
+        <p>{errors.budget?.message}</p>
+        <br />
+
+        <label>Description</label>
+        <textarea placeholder=" Enter"  {...register("description")} />
+        <p>{errors.description?.message}</p>
+        <br />
+
         <button type="submit">Create Project</button>
       </form>
+
+      <button onClick={() => navigate("/engineer/projects")}>Back</button>
     </div>
   );
 }
