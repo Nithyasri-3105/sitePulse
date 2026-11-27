@@ -17,59 +17,87 @@ function ClientComplaints() {
   }
 
   return (
-    <div>
-      <h2>Complaints & Feedback</h2>
+       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-xl mx-auto">
+
+      <h2 className="text-3xl font-bold text-blue-700 text-center mb-6">
+        Complaints & Feedback
+      </h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Complaint Category</label>
-        <select {...register("category")}>
+
+        <label className="text-lg font-semibold">Complaint Category</label>
+        <select {...register("category")}
+          className="w-full border p-2 rounded mb-2">
           <option value="">Select Category</option>
           <option value="Construction Quality">Construction Quality</option>
           <option value="Delay">Delay</option>
           <option value="Material">Material</option>
           <option value="Other">Other</option>
         </select>
-        <p>{errors.category?.message}</p>
+        <p className="text-red-500 text-sm">{errors.category?.message}</p>
         <br />
 
-        <label>Complaint Title</label>
-        <input type="text" placeholder=" Enter" {...register("title")} />
-        <p>{errors.title?.message}</p>
+        <label className="text-lg font-semibold">Complaint Title</label>
+        <input type="text" placeholder="Enter complaint title"
+          className="w-full border p-2 rounded mb-2"
+          {...register("title")} />
+        <p className="text-red-500 text-sm">{errors.title?.message}</p>
         <br />
 
-        <label>Description</label>
-        <textarea placeholder=" Enter" {...register("description")} />
-        <p>{errors.description?.message}</p>
+        <label className="text-lg font-semibold">Description</label>
+        <textarea placeholder="Enter description"
+          className="w-full border p-2 rounded mb-2"
+          {...register("description")} />
+        <p className="text-red-500 text-sm">{errors.description?.message}</p>
         <br />
 
-        <label>Supporting Photo</label>
-        <input type="file" accept="image/*" />
+        <label className="text-lg font-semibold">Supporting Photo</label>
+        <input type="file" accept="image/*"
+          className="w-full border p-2 rounded mb-4" />
         <br />
 
-        <label>Feedback Rating</label>
-        <select {...register("rating")}>
+        <label className="text-lg font-semibold">Feedback Rating</label>
+        <select {...register("rating")}
+          className="w-full border p-2 rounded mb-2">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
         </select>
-        <p>{errors.rating?.message}</p>
+        <p className="text-red-500 text-sm">{errors.rating?.message}</p>
         <br />
 
-        <button type="submit">Submit Complaint</button>
+        <button type="submit"
+          className="w-full bg-blue-500 text-white font-semibold p-3 rounded-lg">
+          Submit Complaint
+        </button>
       </form>
 
-      <h3>Complaint Status</h3>
-      <p>Status: Pending</p>
+      <h3 className="text-xl font-bold text-blue-700 mt-6 mb-2 text-center">
+        Complaint Status
+      </h3>
 
-      <button onClick={() => navigate("/client/budget")}>Previous</button>
+      <p className="text-center text-gray-700 mb-5">Status: Pending</p>
 
-      <button onClick={() => navigate("/client/dashboard")}>Dashboard</button>
+      <div className="flex justify-center gap-3 flex-wrap">
 
-      <button onClick={() => navigate("/client/milestones-documents")}>
-        Next: Milestones & Documents
-      </button>
+        <button onClick={() => navigate("/client/dashboard/budget")}
+          className="bg-blue-500 text-white font-semibold p-3 rounded-lg">
+          Previous
+        </button>
+
+        <button onClick={() => navigate("/client/dashboard")}
+          className="bg-blue-500 text-white font-semibold p-3 rounded-lg">
+          Dashboard
+        </button>
+
+        <button onClick={() => navigate("/client/dashboard/milestones-documents")}
+          className="bg-blue-500 text-white font-semibold p-3 rounded-lg">
+          Next: Milestones & Documents
+        </button>
+
+      </div>
     </div>
   );
 }

@@ -13,31 +13,87 @@ function MilestonesDocuments() {
   }
 
   return (
-    <div>
-      <h2>Milestones & Documents</h2>
-      <h3>Project Milestones</h3>
-      <p>Foundation Work - Completed</p>
-      <p>Structure Work - In Progress</p>
-      <p>Painting Work - Pending</p>
-      <h3>Milestone Approval</h3>
+     <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-xl mx-auto">
+
+      <h2 className="text-3xl font-bold text-blue-700 text-center mb-6">
+        Milestones & Documents
+      </h2>
+
+      <h3 className="text-xl font-bold text-blue-700 mb-3">
+        Project Milestones
+      </h3>
+
+      <div className="bg-blue-50 p-4 rounded-lg mb-3">
+        <p className="text-gray-700 font-semibold">Foundation Work - Completed</p>
+      </div>
+
+      <div className="bg-blue-50 p-4 rounded-lg mb-3">
+        <p className="text-gray-700 font-semibold">Structure Work - In Progress</p>
+      </div>
+
+      <div className="bg-blue-50 p-4 rounded-lg mb-6">
+        <p className="text-gray-700 font-semibold">Painting Work - Pending</p>
+      </div>
+
+      <h3 className="text-xl font-bold text-blue-700 mb-3">
+        Milestone Approval
+      </h3>
+
       <form onSubmit={handleSubmit}>
-        <label>Milestone Decision</label>
-        <select value={approval} onChange={(e) => setApproval(e.target.value)} required>
+
+        <label className="text-lg font-semibold">Milestone Decision</label>
+
+        <select value={approval}
+          onChange={(e) => setApproval(e.target.value)}
+          required
+          className="w-full border p-2 rounded mb-4">
           <option value="">Select Decision</option>
           <option value="Approved">Approve</option>
           <option value="Correction Requested">Request Correction</option>
         </select>
+
         <br />
-        <label>Remarks</label>
-        <textarea value={remarks} onChange={(e) => setRemarks(e.target.value)} />
+
+        <label className="text-lg font-semibold">Remarks</label>
+
+        <textarea value={remarks}
+          onChange={(e) => setRemarks(e.target.value)}
+          placeholder="Enter remarks"
+          className="w-full border p-2 rounded mb-4" />
+
         <br />
-        <button type="submit">Submit Response</button>
+
+        <button type="submit"
+          className="w-full bg-blue-500 text-white font-semibold p-3 rounded-lg">
+          Submit Response
+        </button>
       </form>
-      <h3>Project Documents</h3>
-      <p>Project Plan.pdf</p>
-      <p>Construction Agreement.pdf</p>
-      <button onClick={() => navigate("/client/complaints")}>Previous</button>
-      <button onClick={() => navigate("/client/dashboard")}>Back to Dashboard</button>
+
+      <h3 className="text-xl font-bold text-blue-700 mt-6 mb-3">
+        Project Documents
+      </h3>
+
+      <div className="bg-blue-50 p-4 rounded-lg mb-3">
+        <p className="text-gray-700 font-semibold">Project Plan.pdf</p>
+      </div>
+
+      <div className="bg-blue-50 p-4 rounded-lg mb-6">
+        <p className="text-gray-700 font-semibold">Construction Agreement.pdf</p>
+      </div>
+
+      <div className="flex justify-center gap-4 flex-wrap">
+
+        <button onClick={() => navigate("/client/dashboard/complaints")}
+          className="bg-blue-500 text-white font-semibold p-3 rounded-lg">
+          Previous
+        </button>
+
+        <button onClick={() => navigate("/client/dashboard")}
+          className="bg-blue-500 text-white font-semibold p-3 rounded-lg">
+          Back to Dashboard
+        </button>
+
+      </div>
     </div>
   );
 }

@@ -1,67 +1,128 @@
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Login() {
-  const [formdata, setFormdata] = useState({
+
+  const [logindata, setLogindata] = useState({
     email: "",
     password: "",
     role: ""
   });
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   function handlechange(e) {
-    setFormdata({
-      ...formdata,
+    setLogindata({
+      ...logindata,
       [e.target.name]: e.target.value
     });
   }
 
-  function print() {
-    console.log(formdata);
-  }
-
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
 
-    console.log("Login Success", formdata);
-    alert("Login Successful");
+    const registerdata = location.state;
 
-    if (formdata.role === "Engineer") {
-      navigate("/engineer/dashboard", { state: formdata });
+    console.log("Register data:", registerdata);
+    console.log("Login data:", logindata);
+
+    if (!registerdata) {
+      alert("Please register first");
+      return;
     }
-    else if (formdata.role === "Client") {
-      navigate("/client/dashboard", { state: formdata });
+
+    if (
+      logindata.email === registerdata.email &&
+      logindata.password === registerdata.password &&
+      logindata.role === registerdata.role
+    ) {
+      console.log("Login success");
+      alert("Login Successful");
+
+      if (logindata.role === "Engineer") {
+        navigate("/engineer/dashboard");
+      } else if (logindata.role === "Client") {
+        navigate("/client/dashboard");
+      }
+
+    } else {
+      console.log("Login failed");
+      alert("Invalid Email, Password or Role");
     }
-  };
+  }
 
   return (
-    <>
-      <h2>SitePulse Login</h2>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
 
-      <form onSubmit={handleSubmit}>
-        <input type="email" name="email" placeholder="Enter your email" value={formdata.email} onChange={handlechange} required />
+      <form onSubmit={handleSubmit}
+        className="p-8 w-96 shadow-lg bg-white rounded-lg">
+
+        <h2 className="text-3xl font-bold text-blue-700 text-center mb-6">
+          SitePulse Login
+        </h2>
+
+        <label htmlFor="email" className="text-lg font-semibold">
+          Email :
+        </label>
+
+        <input type="email" name="email"
+          placeholder="Enter your email"
+          id="email"
+          className="w-full border p-2 rounded mb-2"
+          onChange={handlechange}
+          required
+        />
+
         <br />
 
-        <input type="password" name="password" placeholder="Enter your password" value={formdata.password} onChange={handlechange} required/>
+        <label htmlFor="password" className="text-lg font-semibold">
+          Password :
+        </label>
+
+        <input type="password" name="password"
+          placeholder="Enter your password"
+          id="password"
+          className="w-full border p-2 rounded mb-2"
+          onChange={handlechange}
+          required
+        />
+
         <br />
 
-        <select name="role" value={formdata.role} onChange={handlechange} required>
+        <label htmlFor="role" className="text-lg font-semibold">
+          Role :
+        </label>
+
+        <select name="role"
+          id="role"
+          className="w-full border p-2 rounded mb-4"
+          onChange={handlechange}
+          required
+        >
           <option value="">Select Role</option>
           <option value="Engineer">Engineer</option>
           <option value="Client">Client</option>
         </select>
 
-        <br />
+        <button type="submit"
+          className="w-full bg-pink-600 text-white text-lg font-semibold p-2 rounded">
+          Login
+        </button>
 
-        <button type="submit">Login</button>
-        <button type="button" onClick={print}>Print</button>
+        <p className="text-lg font-semibold text-center mt-4 mb-4">
+          Don't have an account?
+        </p>
+
+        <button type="button"
+          onClick={() => navigate("/register")}
+          className="w-full bg-blue-400 text-white text-lg font-semibold p-2 rounded">
+          Register
+        </button>
+
       </form>
-
-      <p>Don't have an account?</p>
-      <button onClick={() => navigate("/register")}>Register</button>
-    </>
+    </div>
   );
 }
 

@@ -20,50 +20,79 @@ function ProductPurchase() {
   }
 
   return (
-    <div>
-      <h2>Product Purchase Tracking</h2>
+     <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-xl mx-auto">
+
+      <h2 className="text-3xl font-bold text-blue-700 text-center mb-6">
+        Product Purchase Tracking
+      </h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Product Name</label>
-        <input type="text" placeholder=" Enter" {...register("productName")} />
-        <p>{errors.productName?.message}</p>
+
+        <label className="text-lg font-semibold">Product Name</label>
+        <input type="text" placeholder="Enter product name"
+          className="w-full border p-2 rounded mb-2"
+          {...register("productName")} />
+        <p className="text-red-500 text-sm">{errors.productName?.message}</p>
         <br />
 
-        <label>Category</label>
-        <input type="text" placeholder=" Enter" {...register("category")} />
-        <p>{errors.category?.message}</p>
+        <label className="text-lg font-semibold">Category</label>
+        <input type="text" placeholder="Enter category"
+          className="w-full border p-2 rounded mb-2"
+          {...register("category")} />
+        <p className="text-red-500 text-sm">{errors.category?.message}</p>
         <br />
 
-        <label>Quantity</label>
-        <input type="number" placeholder=" Enter" {...register("quantity")} />
-        <p>{errors.quantity?.message}</p>
+        <label className="text-lg font-semibold">Quantity</label>
+        <input type="number" placeholder="Enter quantity"
+          className="w-full border p-2 rounded mb-2"
+          {...register("quantity")} />
+        <p className="text-red-500 text-sm">{errors.quantity?.message}</p>
         <br />
 
-        <label>Unit</label>
-        <input type="text" placeholder=" Enter"  {...register("unit")} />
-        <p>{errors.unit?.message}</p>
+        <label className="text-lg font-semibold">Unit</label>
+        <input type="text" placeholder="Enter unit"
+          className="w-full border p-2 rounded mb-2"
+          {...register("unit")} />
+        <p className="text-red-500 text-sm">{errors.unit?.message}</p>
         <br />
 
-        <label>Price Per Unit</label>
-        <input type="number" placeholder=" Enter" {...register("price")} />
-        <p>{errors.price?.message}</p>
+        <label className="text-lg font-semibold">Price Per Unit</label>
+        <input type="number" placeholder="Enter price per unit"
+          className="w-full border p-2 rounded mb-2"
+          {...register("price")} />
+        <p className="text-red-500 text-sm">{errors.price?.message}</p>
         <br />
 
-        <label>Purchase Date</label>
-        <input type="date"  {...register("purchaseDate")} />
-        <p>{errors.purchaseDate?.message}</p>
+        <label className="text-lg font-semibold">Purchase Date</label>
+        <input type="date"
+          className="w-full border p-2 rounded mb-2"
+          {...register("purchaseDate")} />
+        <p className="text-red-500 text-sm">{errors.purchaseDate?.message}</p>
         <br />
 
-        <p>Total Cost: ₹{totalCost}</p>
+        <p className="text-xl font-bold text-blue-700 mb-4">
+          Total Cost: ₹{totalCost}
+        </p>
 
-        <button type="submit">Save Purchase</button>
+        <button type="submit"
+          className="w-full bg-blue-500 text-white font-semibold p-3 rounded-lg">
+          Save Purchase
+        </button>
       </form>
 
-      <button onClick={() => navigate("/engineer/complaints")}>Previous</button>
+      <div className="flex justify-center gap-4 mt-4">
 
-      <button onClick={() => navigate("/engineer/dashboard")}>
-        Back to Dashboard
-      </button>
+        <button onClick={() => navigate("/engineer/dashboard/complaints")}
+          className="bg-blue-500 text-white font-semibold p-3 rounded-lg">
+          Previous
+        </button>
+
+        <button onClick={() => navigate("/engineer/dashboard")}
+          className="bg-blue-500 text-white font-semibold p-3 rounded-lg">
+          Back to Dashboard
+        </button>
+
+      </div>
     </div>
   );
 }

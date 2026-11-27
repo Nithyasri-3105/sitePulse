@@ -15,45 +15,65 @@ function ComplaintManagement() {
   }
 
   return (
-    <div>
-      <h2>Complaint Management</h2>
+     <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-xl mx-auto">
+
+      <h2 className="text-3xl font-bold text-blue-700 text-center mb-6">
+        Complaint Management
+      </h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Complaint Title</label>
-        <input type="text" placeholder="Enter" {...register("complaintTitle")} />
-        <p>{errors.complaintTitle?.message}</p>
+
+        <label className="text-lg font-semibold">Complaint Title</label>
+        <input type="text" placeholder="Enter complaint title"
+          className="w-full border p-2 rounded mb-2"
+          {...register("complaintTitle")} />
+        <p className="text-red-500 text-sm">{errors.complaintTitle?.message}</p>
         <br />
 
-        <label>Engineer Response</label>
-        <textarea placeholder="Enter" {...register("response")} />
-        <p>{errors.response?.message}</p>
+        <label className="text-lg font-semibold">Engineer Response</label>
+        <textarea placeholder="Enter response"
+          className="w-full border p-2 rounded mb-2"
+          {...register("response")} />
+        <p className="text-red-500 text-sm">{errors.response?.message}</p>
         <br />
 
-        <label>Complaint Status</label>
-        <select {...register("status")}>
+        <label className="text-lg font-semibold">Complaint Status</label>
+        <select className="w-full border p-2 rounded mb-2"
+          {...register("status")}>
           <option value="">Select Status</option>
           <option value="Pending">Pending</option>
           <option value="In Progress">In Progress</option>
           <option value="Resolved">Resolved</option>
         </select>
-        <p>{errors.status?.message}</p>
+        <p className="text-red-500 text-sm">{errors.status?.message}</p>
         <br />
 
-        <label>Resolution Remarks</label>
-        <textarea placeholder="Enter" {...register("resolution")} />
-        <p>{errors.resolution?.message}</p>
+        <label className="text-lg font-semibold">Resolution Remarks</label>
+        <textarea placeholder="Enter resolution remarks"
+          className="w-full border p-2 rounded mb-2"
+          {...register("resolution")} />
+        <p className="text-red-500 text-sm">{errors.resolution?.message}</p>
         <br />
 
-        <button type="submit">Submit Response</button>
+        <button type="submit"
+          className="w-full bg-blue-500 text-white font-semibold p-3 rounded-lg">
+          Submit Response
+        </button>
       </form>
 
-      <button onClick={() => navigate("/engineer/dashboard")}>
-        Back to Dashboard
-      </button>
+      <div className="flex justify-center gap-4 mt-4">
 
-      <button onClick={() => navigate("/engineer/purchases")}>
-        Next: Product Purchase
-      </button>
+        <button onClick={() => navigate("/engineer/dashboard")}
+          className="bg-blue-500 text-white font-semibold p-3 rounded-lg">
+          Back to Dashboard
+        </button>
+
+        <button onClick={() => navigate("/engineer/dashboard/purchases")}
+          className="bg-blue-500 text-white font-semibold p-3 rounded-lg">
+          Next: Product Purchase
+        </button>
+
+      </div>
     </div>
   );
 }

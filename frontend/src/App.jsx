@@ -21,19 +21,22 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/engineer/dashboard" element={<EngineerDashboard />} />
-        <Route path="/engineer/projects" element={<MyProjects />} />
-        <Route path="/engineer/create-project" element={<CreateProject />} />
-        <Route path="/engineer/project/:id" element={<ProjectWorkspace />} />
-        <Route path="/engineer/complaints" element={<ComplaintManagement />} />
-        <Route path="/engineer/purchases" element={<ProductPurchase />} />  
+        <Route path="/engineer/dashboard" element={<EngineerDashboard />} >
+        <Route path="projects" element={<MyProjects />} />
+        <Route path="create-project" element={<CreateProject />} />
+        <Route path="project/:id" element={<ProjectWorkspace />} />
+        <Route path="complaints" element={<ComplaintManagement />} />
+        <Route path="purchases" element={<ProductPurchase />} />  
+        </Route>
              
-        <Route path="/client/dashboard" element={<ClientDashboard />} />
-        <Route path="/client/progress" element={<ProgressMonitoring />} />
-        <Route path="/client/gallery" element={<ProgressGallery />} />
-        <Route path="/client/budget" element={<BudgetOverview />} />
-        <Route path="/client/complaints" element={<ClientComplaints />} />
-        <Route path="/client/milestones-documents" element={<MilestonesDocuments />} /></Routes>
+        <Route path="/client/dashboard" element={<ClientDashboard />} >
+        <Route path="progress" element={<ProgressMonitoring />} />
+        <Route path="gallery" element={<ProgressGallery />} />
+        <Route path="budget" element={<BudgetOverview />} />
+        <Route path="complaints" element={<ClientComplaints />} />
+        <Route path="milestones-documents" element={<MilestonesDocuments />} />
+        </Route>
+        </Routes>
     </BrowserRouter>
   );
 }
