@@ -12,39 +12,30 @@ function ProjectWorkspace() {
 
   const [sitePhoto, setSitePhoto] = useState(null);
   const [documentFile, setDocumentFile] = useState(null);
-
   const reportForm = useForm({
     resolver: zodResolver(reportschema)
   });
-
   const timesheetForm = useForm({
     resolver: zodResolver(timesheetschema)
   });
-
   const materialForm = useForm({
     resolver: zodResolver(materialschema)
   });
-
   const expenseForm = useForm({
     resolver: zodResolver(expenseschema)
   });
-
   const delayForm = useForm({
     resolver: zodResolver(delayschema)
   });
-
   const milestoneForm = useForm({
     resolver: zodResolver(milestoneschema)
   });
-
   const documentForm = useForm({
     resolver: zodResolver(documentschema)
   });
-
   const qualityForm = useForm({
     resolver: zodResolver(qualityschema)
   });
-
   function submitData(data, message) {
     console.log(data);
     alert(message);

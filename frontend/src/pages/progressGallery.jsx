@@ -10,10 +10,8 @@ function ProgressGallery() {
 
       <p>Construction Stage 1</p>
       <img src="/conimage.jpg" alt="Construction Stage 1" />
-
       <p>Construction Stage 2</p>
       <img src="C:\Users\Nithya Sri V\Paddy.webp" alt="Construction Stage 2" />
-
       <p>Construction Stage 3</p>
       <img src="C:\Users\Nithya Sri V\Constru.jpg" alt="Construction Stage 3" />
 

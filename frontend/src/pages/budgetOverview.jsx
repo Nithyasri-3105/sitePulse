@@ -11,7 +11,7 @@ function BudgetOverview() {
     <div>
       <h2>Budget Overview</h2>
       <p>Estimated Budget: ₹{estimatedBudget}</p>
-      <p>Total Expenses: ₹{totalExpenses}</p>
+<p>Total Expenses: ₹{totalExpenses}</p>
       <p>Remaining Budget: ₹{remainingBudget}</p>
 
       <button onClick={() => navigate("/client/gallery")}>Previous</button>
