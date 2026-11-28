@@ -74,13 +74,10 @@ function Login() {
           onChange={handlechange}
           required
         />
-
         <br />
-
         <label htmlFor="password" className="text-lg font-semibold">
           Password :
         </label>
-
         <input type="password" name="password"
           placeholder="Enter your password"
           id="password"
